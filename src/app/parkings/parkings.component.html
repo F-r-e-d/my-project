@@ -1,0 +1,7 @@
+<h1>{{ titleParkings }}</h1>
+  <ul>
+    <li *ngFor="let parking of parkings" (click)="onSelect(parking)">
+      {{ parking.name }} <button routerLink="/detail/{{parking.id}}">Détails</button>
+    </li>
+  </ul>
+  <app-detailParking [parking]="selectedParking"></app-detailParking>
