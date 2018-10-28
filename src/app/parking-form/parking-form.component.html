@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Nouveau Parking</h1>
+  <h2>Template-driven forms</h2>
+  <form #parkingForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+          <label for="id">ID</label>
+          <input type="text" class="form-control" placeholder="Id" id="id" required minlength="2"
+          [(ngModel)]="model.id" name="id" #parkingIdAction="ngModel">
+        </div>
+          <div *ngIf="parkingIdAction?.errors?.minlength" class="alert alert-warning">
+              Le nom doit avoir 2 chiffres minimum
+            </div>
+          <div *ngIf="parkingIdAction?.errors?.required" class="alert alert-danger" >
+              Champs requis
+        </div>
+
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" required minlength="4" placeholder="Nom" id="name"
+      [(ngModel)]="model.name" name="name" #parkingNameAction="ngModel" >
+    </div>
+    <div *ngIf="parkingNameAction?.errors?.minlength" class="alert alert-warning">
+        Le nom doit avoir 4 lettres minimum
+      </div>
+    <div *ngIf="parkingNameAction?.errors?.required" class="alert alert-danger" >
+        Champs requis
+      </div>
+
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" placeholder="Description" id="description"
+      [(ngModel)]="model.description" name="description">
+    </div>
+
+    <button type="submit" [disabled]="! parkingForm.form.valid" class="btn btn-success">Submit</button>
+
+  </form>
+
+
+</div>

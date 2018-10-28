@@ -9,7 +9,7 @@ import { Parking } from '../parking';
   styleUrls: ['./parkings.component.css']
 })
 export class ParkingsComponent implements OnInit {
-  titleParkings:String = 'Liste de parking';
+  titleParkings: String = 'Liste de parking';
   parkings = PARKINGS;
  /* parkings: Parking[]; */
 

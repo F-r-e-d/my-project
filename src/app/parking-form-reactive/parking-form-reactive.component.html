@@ -1,0 +1,21 @@
+<div class="container">
+<h2>Reactive Form</h2>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmitR()">
+<label>
+    Id:
+    <input type="text" class="form-control" [formControlName]="'idR'">
+  </label>
+
+  <label>
+    Name:
+    <input type="text"  class="form-control" [formControlName]="'nameR'">
+  </label>
+
+
+<label>
+    Description:
+    <input type="text"  class="form-control" [formControlName]="'descriptionR'">
+  </label>
+
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>

@@ -29,7 +29,7 @@ export class DetailComponent implements OnInit {
       const id = +this.route.snapshot.paramMap.get('id');
       for (let i = 0; i < this.parkings.length; i++) {
         if (this.parkings[i].id === id) {
-          this.parking= this.parkings[i];
+          this.parking = this.parkings[i];
         }
 
       }
