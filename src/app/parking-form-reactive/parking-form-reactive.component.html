@@ -1,21 +1,41 @@
 <div class="container">
-<h2>Reactive Form</h2>
-<form [formGroup]="profileForm" (ngSubmit)="onSubmitR()">
-<label>
-    Id:
-    <input type="text" class="form-control" [formControlName]="'idR'">
-  </label>
+  <h2>Reactive Form</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmitR()">
+    <label>
+      Id:
+      <input type="text" class="form-control"  formControlName="idR">
+    </label>
+    
+    <div *ngIf="profileForm.get('idR').errors && (profileForm.get('idR').touched || profileForm.get('idR').dirty)" class="alert alert-danger">
+      <div *ngIf="profileForm.get('idR').errors.required">
+        L'Id est requis
+      </div>
+      
+      <div *ngIf="profileForm.get('idR').errors.minlength || profileForm.get('idR').errors.maxlength">
+        Le nombre de caractère de l'Id doit être compris entre 2 et 5
+      </div>
 
-  <label>
-    Name:
-    <input type="text"  class="form-control" [formControlName]="'nameR'">
-  </label>
+    </div>
 
+    <label>
+      Name:
+      <input type="text"  class="form-control" formControlName="nameR">
+    </label>
+    <div *ngIf="profileForm.get('nameR').errors && (profileForm.get('nameR').touched || profileForm.get('nameR').dirty)" class="alert alert-danger">
+      <div *ngIf="profileForm.get('nameR').errors.required">
+        Le nom est requis
+      </div>
 
-<label>
-    Description:
-    <input type="text"  class="form-control" [formControlName]="'descriptionR'">
-  </label>
-
-  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
-</form>
+      <div *ngIf="profileForm.get('nameR').errors.minlength || profileForm.get('nameR').errors.maxlength">
+          Le nombre de caractère de l'Id doit être compris entre 4 et 20
+        </div>
+    </div>
+    
+    <label>
+      Description:
+      <input type="text"  class="form-control" formControlName="descriptionR">
+    </label>
+    <br>
+    <button type="submit" class="btn btn-success" [disabled]="! profileForm.valid">Submit</button>
+  </form>
+  

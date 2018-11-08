@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -9,11 +9,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ParkingFormReactiveComponent implements OnInit{
 
-  profileForm = new FormGroup({
-    idR: new FormControl(''),
-    nameR: new FormControl(''),
-    descriptionR: new FormControl(''),
-  });
+  profileForm: FormGroup;
+
+  constructor(private fb: FormBuilder){}
 
   onSubmitR() {
     // TODO: Use EventEmitter with form value
@@ -22,7 +20,11 @@ export class ParkingFormReactiveComponent implements OnInit{
 
 
   ngOnInit(): void {
-
+    this.profileForm = this.fb.group({
+      idR: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(5) ]],
+      nameR: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20) ]],
+      descriptionR: [''],
+    });
 
   }
 
